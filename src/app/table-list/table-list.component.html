@@ -1,0 +1,62 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Users Table</h4>
+              <p class="card-category">Check All Users</p>
+  
+              <input type="text" [(ngModel)]="searchText" (keyup)="searchUsers()" placeholder="Search for names..">
+              <button (click)="filterByGender('Male')">Male</button>
+              <button (click)="filterByGender('Female')">Female</button>
+              <button (click)="filterByStatus('Red')">Red</button>
+              <button (click)="filterByStatus('Green')">Green</button>
+              <button (click)="filterByStatus('Yellow')">Yellow</button>
+              <button (click)="resetFilters()">Reset Filters</button>
+            </div>
+  
+            <div class="card-body">
+              <div class="table-responsive">
+                <a href="https://docota.netlify.app/" target="_blank">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Number</th>
+                    <th>Region</th>
+                    <th>Profession</th>
+                    <th>Emergency Contact</th>
+                    <th>Status</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of filteredUsers" [ngClass]="{
+                          'status-red': user.status === 'Red',
+                          'status-green': user.status === 'Green',
+                          'status-yellow': user.status === 'Yellow'
+                        }">
+                      <td>{{ user.id }}</td>
+                      <td>{{ user.name }}</td>
+                      <td>{{ user.email }}</td>
+                      <td>{{ user.number }}</td>
+                      <td>{{ user.region }}</td>
+                      <td>{{ user.profession }}</td>
+                      <td>{{ user.emergencyContact }}</td>
+                      <td>{{ user.status }}</td>
+                      <td>{{ user.gender }}</td>
+                      <td>{{ user.age }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
